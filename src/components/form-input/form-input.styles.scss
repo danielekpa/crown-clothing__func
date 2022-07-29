@@ -1,0 +1,80 @@
+$sub-color: grey;
+$main-color: black;
+
+@mixin shrinkLabel {
+  top: -10px;
+  left: 10px;
+  font-size: 14px;
+  color: $main-color;
+  background-color: #fff;
+  padding: 0 5px;
+  z-index: 999;
+}
+
+.group {
+  position: relative;
+  margin: 45px 0;
+  width: 100%;
+
+  .form-input {
+    background: none;
+    background-color: white;
+    color: $sub-color;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid $sub-color;
+    margin: 25px 0;
+
+    /*  &:-moz-autofill {
+      disabled: true;
+      enabled: false;
+    } */
+    &:focus {
+      outline: none;
+    }
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px #fff inset;
+      -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+      // background-color: white;
+
+      ~ .form-input-label {
+        @include shrinkLabel();
+      }
+    }
+  }
+  input[type="password"] {
+    letter-spacing: 0.3em;
+  }
+
+  .form-input-label {
+    color: $sub-color;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 300ms ease all;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+}
+
+.error-label {
+  color: #f43335;
+  // margin: 0 0 45px !important;
+  // padding: 10px 10px 10px 5px;
+}
+
+// .form-input
