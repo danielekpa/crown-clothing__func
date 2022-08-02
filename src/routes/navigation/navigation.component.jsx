@@ -10,7 +10,7 @@ import "./navigation.styles.scss";
 
 export default function Navigation() {
   const {currentUser} = useContext(UserContext);
-  const {isCartOpen} = useContext(CartContext);
+  const {cartItems, isCartOpen} = useContext(CartContext);
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function Navigation() {
           <Link className="nav-link" to="/shop">
             Cart
           </Link>
-          <CartIcon />
+          {!!cartItems.length && <CartIcon />}
         </div>
         {isCartOpen && <CartDropdown />}
       </div>
