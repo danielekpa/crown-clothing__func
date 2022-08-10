@@ -1,0 +1,18 @@
+@use "../../utils/styles.util" as util;
+
+.category-preview-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  .title {
+    @include util.categoryTitle();
+    display: inline-block;
+  }
+
+  .preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+  }
+}
